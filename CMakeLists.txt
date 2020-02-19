@@ -8,11 +8,10 @@ file(GLOB SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
 
 add_library(CUDABuddyAllocator ${SOURCES})
 
-find_package(CUDA REQUIRED)
+find_package(CUDAToolkit REQUIRED)
 find_package(spdlog REQUIRED)
 
-target_include_directories(CUDABuddyAllocator PRIVATE ${CUDA_INCLUDE_DIRS})
-target_link_libraries(CUDABuddyAllocator PRIVATE ${CUDA_LIBRARIES})
+target_link_libraries(CUDABuddyAllocator PRIVATE CUDA::cudart CUDA::cudart_static)
 target_link_libraries(CUDABuddyAllocator PRIVATE spdlog::spdlog)
 
 # test
