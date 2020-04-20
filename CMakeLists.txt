@@ -23,7 +23,7 @@ endif()
 # install lib
 install(
   TARGETS CUDABuddyAllocator
-  EXPORT ${PROJECT_NAME}Targets
+  EXPORT CUDABuddyAllocatorConfig
   RUNTIME DESTINATION bin
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib COMPONENT library
@@ -37,7 +37,4 @@ install(
   PATTERN "*.hpp")
 
 # install cmake config file
-install(
-  EXPORT ${PROJECT_NAME}Targets
-  FILE ${PROJECT_NAME}Config.cmake
-  DESTINATION lib/cmake/${PROJECT_NAME})
+install(EXPORT CUDABuddyAllocatorConfig DESTINATION lib/cmake/CUDABuddyAllocator)

@@ -2,6 +2,7 @@
 #include <cuda_runtime_api.h>
 #include <mutex>
 #include <spdlog/spdlog.h>
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 #include <doctest/doctest.h>
 #include <thread>
