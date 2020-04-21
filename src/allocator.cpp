@@ -51,7 +51,7 @@ namespace cuda_buddy {
       std::string err_str(operation + " failed:");
       err_str += cudaGetErrorString(error);
       if (do_abort) {
-        spdlog::get("cuda_buddy")->error("{}", err_str);
+        spdlog::error("{}", err_str);
         abort();
       } else {
         throw std::runtime_error(err_str);
@@ -137,14 +137,14 @@ namespace cuda_buddy {
     size = next_pow_of_2(size);
     //我们目前的参数类型决定了只能分配这么多
     if (size > static_cast<size_t>(UINT32_MAX)) {
-      spdlog::get("cuda_buddy")->warn("too large size {}", size);
+      spdlog::warn("too large size {}", size);
       return nullptr;
     }
 
     size_t length = 1ULL << max_level;
 
     if (size > length) {
-      spdlog::get("cuda_buddy")->warn("too large size {}", size);
+      spdlog::warn("too large size {}", size);
       return nullptr;
     }
 

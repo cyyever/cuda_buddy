@@ -61,9 +61,9 @@ namespace cuda_buddy {
     static size_t parent_index(size_t index) { return (index + 1) / 2 - 1; }
     static size_t sibling_index(size_t index) { return index + (index & 1); }
 
-  private:
+  
     size_t used_size{};
-    uint8_t max_level{};
+    uint8_t max_level{28};
     uint8_t *tree{nullptr};
     void *data{nullptr};
     mutable std::shared_timed_mutex alloc_mutex;

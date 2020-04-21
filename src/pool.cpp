@@ -45,12 +45,12 @@ namespace cuda_buddy {
   void *pool::alloc(size_t size, size_t alignment) {
 
     if (size > (1ULL << buddy_block_level)) {
-      spdlog::get("cuda_buddy")->warn("too large size {}", size);
+      spdlog::warn("too large size {}", size);
       return nullptr;
     }
 
     if (get_max_level() == 0) {
-      spdlog::get("cuda_buddy")->warn("max level is 0");
+      spdlog::warn("max level is 0");
       return nullptr;
     }
 
@@ -96,7 +96,7 @@ namespace cuda_buddy {
       return global_host_pool;
     }
     if (gpu_no >= max_device_num) {
-      spdlog::get("cuda_buddy")->error("invalid gpu {}", gpu_no);
+      spdlog::error("invalid gpu {}", gpu_no);
       throw std::runtime_error(std::string("invalid gpu ") +
                                std::to_string(gpu_no));
     }
@@ -154,11 +154,11 @@ namespace cuda_buddy {
       if (global_pool.alloced_block_num >= max_block_num) {
         auto location_str =
             (data_location == alloc_location::host) ? "host" : "device";
-        spdlog::get("cuda_buddy")
-            ->warn("no {} block available,allocated_block_num {},max_block_num "
-                   "{},consider increasing {} pool size",
-                   location_str, global_pool.alloced_block_num, max_block_num,
-                   location_str);
+        spdlog::warn(
+            "no {} block available,allocated_block_num {},max_block_num "
+            "{},consider increasing {} pool size",
+            location_str, global_pool.alloced_block_num, max_block_num,
+            location_str);
         return {};
       }
       auto buddy_block =
