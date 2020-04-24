@@ -131,7 +131,7 @@ namespace cuda_buddy {
         i++;
         continue;
       }
-      if (i < local_pool.size()) {
+      if (i + 1 < local_pool.size()) {
         std::swap(local_pool[i], local_pool.back());
       }
       global_pool.add_block(std::move(local_pool.back()));
