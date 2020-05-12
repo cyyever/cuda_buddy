@@ -12,7 +12,7 @@ find_package(CUDAToolkit REQUIRED)
 find_package(spdlog REQUIRED)
 
 target_link_libraries(CUDABuddyAllocator PRIVATE CUDA::cudart CUDA::cudart_static)
-target_link_libraries(CUDABuddyAllocator PRIVATE spdlog::spdlog)
+target_link_libraries(CUDABuddyAllocator PRIVATE spdlog::spdlog_header_only)
 
 # test
 option(BUILD_TEST "Build test" ON)
