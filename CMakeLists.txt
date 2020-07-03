@@ -15,10 +15,7 @@ target_link_libraries(CUDABuddyAllocator PRIVATE CUDA::cudart CUDA::cudart_stati
 target_link_libraries(CUDABuddyAllocator PRIVATE spdlog::spdlog_header_only)
 
 # test
-option(BUILD_TEST "Build test" ON)
-if(BUILD_TEST)
-  add_subdirectory(test)
-endif()
+add_subdirectory(test)
 
 # install lib
 install(
