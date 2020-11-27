@@ -1,6 +1,4 @@
-find_package(CUDAToolkit REQUIRED)
 find_package(doctest REQUIRED)
-find_package(spdlog REQUIRED)
 
 file(GLOB test_sources ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
 
@@ -10,7 +8,6 @@ foreach(test_source IN LISTS test_sources)
   target_link_libraries(${test_prog} PRIVATE CUDABuddyAllocator)
   target_link_libraries(${test_prog} PRIVATE doctest::doctest)
   target_link_libraries(${test_prog} PRIVATE CUDA::cudart CUDA::cudart_static)
-  target_link_libraries(${test_prog} PRIVATE spdlog::spdlog)
   target_compile_definitions(
     ${test_prog} PRIVATE DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
                          DOCTEST_CONFIG_NO_EXCEPTIONS_BUT_WITH_ALL_ASSERTS)
